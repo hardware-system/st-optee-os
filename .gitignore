@@ -4,6 +4,9 @@
 /TAGS
 /out
 /.project
+
+build/
+deploy/
 # Ignore all dot files and folder
 .*
 # But not those

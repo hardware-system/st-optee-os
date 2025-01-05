@@ -15,10 +15,14 @@ flavor_dts_file-157F_ED1 = stm32mp157f-ed1.dts
 flavor_dts_file-157F_EV1 = stm32mp157f-ev1.dts
 
 flavor_dts_file-135F_DK = stm32mp135f-dk.dts
+flavor_dts_file-135D_ICI = stm32mp135d-ici.dts
+flavor_dts_file-131D_ICI = stm32mp131d-ici.dts
 
 flavorlist-cryp-512M = $(flavor_dts_file-157C_DK2) \
 		       $(flavor_dts_file-157F_DK2) \
-		       $(flavor_dts_file-135F_DK)
+		       $(flavor_dts_file-135F_DK) \
+		       $(flavor_dts_file-135D_ICI) \
+		       $(flavor_dts_file-131D_ICI)
 
 flavorlist-no_cryp-512M = $(flavor_dts_file-157A_DK1) \
 			  $(flavor_dts_file-157D_DK1)
@@ -61,7 +65,9 @@ flavorlist-MP15 = $(flavor_dts_file-157A_DHCOR_AVENGER96) \
 		  $(flavor_dts_file-157F_ED1) \
 		  $(flavor_dts_file-157F_EV1)
 
-flavorlist-MP13 = $(flavor_dts_file-135F_DK)
+flavorlist-MP13 = $(flavor_dts_file-135F_DK) \
+		  $(flavor_dts_file-135D-ICI) \
+		  $(flavor_dts_file-131D-ICI)
 
 # External device tree default path
 CFG_EXT_DTS ?= $(arch-dir)/dts/external-dt/optee
