@@ -17,6 +17,9 @@ flavor_dts_file-157F_EV1 = stm32mp157f-ev1.dts
 flavor_dts_file-135F_DK = stm32mp135f-dk.dts
 flavor_dts_file-135D_ICI = stm32mp135d-ici.dts
 flavor_dts_file-131D_ICI = stm32mp131d-ici.dts
+flavor_dts_file-131D_ICI_256M = stm32mp131d-ici-256M.dts
+
+flavorlist-cryp-256M = $(flavor_dts_file-131D_ICI_256M)
 
 flavorlist-cryp-512M = $(flavor_dts_file-157C_DK2) \
 		       $(flavor_dts_file-157F_DK2) \
@@ -44,6 +47,8 @@ flavorlist-no_cryp = $(flavorlist-no_cryp-512M) \
 
 flavorlist-no_rng = # currently empty
 
+flavorlist-256M = $(flavorlist-cryp-256M)
+
 flavorlist-512M = $(flavorlist-cryp-512M) \
 		  $(flavorlist-no_cryp-512M)
 
@@ -66,8 +71,9 @@ flavorlist-MP15 = $(flavor_dts_file-157A_DHCOR_AVENGER96) \
 		  $(flavor_dts_file-157F_EV1)
 
 flavorlist-MP13 = $(flavor_dts_file-135F_DK) \
-		  $(flavor_dts_file-135D-ICI) \
-		  $(flavor_dts_file-131D-ICI)
+		  $(flavor_dts_file-135D_ICI) \
+		  $(flavor_dts_file-131D_ICI) \
+		  $(flavor_dts_file-131D_ICI_256M)
 
 # External device tree default path
 CFG_EXT_DTS ?= $(arch-dir)/dts/external-dt/optee
@@ -283,6 +289,9 @@ CFG_TUI_FRAME_BUFFER_SIZE_MAX ?= 0x01000000
 CFG_RESERVED_VASPACE_SIZE ?= (10 * 1024 * 1024 + $(CFG_TUI_FRAME_BUFFER_SIZE_MAX))
 endif
 
+ifneq ($(filter $(CFG_EMBED_DTB_SOURCE_FILE),$(flavorlist-256M)),)
+CFG_DRAM_SIZE    ?= 0x10000000 
+endif
 
 ifneq ($(filter $(CFG_EMBED_DTB_SOURCE_FILE),$(flavorlist-512M)),)
 CFG_DRAM_SIZE    ?= 0x20000000

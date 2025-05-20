@@ -4,7 +4,7 @@ BLD_PATH ?= $(SRC_PATH)/build
 DEPLOYDIR ?= $(SRC_PATH)/deploy
 
 # Set default optee-os config
-CFG_EMBED_DTB_SOURCE_FILE ?= stm32mp135d-ici stm32mp131d-ici 
+CFG_EMBED_DTB_SOURCE_FILE ?= stm32mp135d-ici stm32mp131d-ici stm32mp131d-ici-256M 
 
 # Remove default variables
 LDFLAGS =
